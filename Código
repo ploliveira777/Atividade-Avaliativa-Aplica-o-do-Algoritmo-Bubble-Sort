@@ -1,0 +1,60 @@
+
+#include <stdio.h>
+
+#define TAMANHO 10
+
+int main(void) {
+    // Array com os precos de 10 produtos da loja virtual.
+    float precos[TAMANHO] = {
+        199.90, 49.90, 89.90, 29.90, 149.90,
+        19.90, 299.90, 79.90, 59.90, 119.90
+    };
+
+    float auxiliar;
+    int i, j;
+
+    printf("========================================\n");
+    printf("       LOJA VIRTUAL - PRECOS             \n");
+    printf("========================================\n");
+
+    // Exibe os precos antes da ordenacao.
+    printf("\nPrecos antes da ordenacao:\n");
+
+    for (i = 0; i < TAMANHO; i++) {
+        printf("Produto %d: R$ %.2f\n", i + 1, precos[i]);
+    }
+
+    // Bubble Sort: compara elementos adjacentes.
+    // A cada passagem, o maior valor restante vai para o final.
+    for (i = 0; i < TAMANHO - 1; i++) {
+
+        // Compara os elementos vizinhos do array.
+        for (j = 0; j < TAMANHO - 1 - i; j++) {
+
+            // Se o preco atual for maior que o proximo,
+            // troca os dois valores de posicao.
+            if (precos[j] > precos[j + 1]) {
+                auxiliar = precos[j];
+                precos[j] = precos[j + 1];
+                precos[j + 1] = auxiliar;
+            }
+        }
+    }
+
+    // Exibe os precos depois da ordenacao crescente.
+    printf("\nPrecos depois da ordenacao:\n");
+
+    for (i = 0; i < TAMANHO; i++) {
+        printf("Produto %d: R$ %.2f\n", i + 1, precos[i]);
+    }
+
+    printf("\nCriterio utilizado: ordem crescente "
+           "(menor para o maior).\n");
+
+    printf("Menor preco: R$ %.2f\n", precos[0]);
+    printf("Maior preco: R$ %.2f\n", precos[TAMANHO - 1]);
+
+    printf("\nOrdenacao concluida com sucesso!\n");
+
+    return 0;
+}
